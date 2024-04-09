@@ -2,9 +2,9 @@ POST http://localhost:3333/events
 Content-Type: application/json
 
 {
-    "title": "Unite Summit novo novo",
-    "details": "Um evento para programação novo",
-    "maximumAttendees":20
+    "title": "Novo evento 2",
+    "details": "Um evento para programação para uma pessoa",
+    "maximumAttendees":1
 }
 
 ###
@@ -14,17 +14,17 @@ Content-Type: application/json
 
 {
     "name": "Adolfo Machado",
-    "email": "adolfo@email.com"
+    "email": "adolfo2@email.com"
 }
 
 ###
 
-POST http://localhost:3333/events/5e49491d-0665-4744-879c-ab9a7ff3f615/attendees
+POST http://localhost:3333/events/9208046d-6a8c-4004-b5d4-a11c869e45cf/attendees
 Content-Type: application/json
 
 {
     "name": "Adolfo Machado",
-    "email": "adolfo@email.com"
+    "email": "adolfo2@email.com"
 }
 
 ###

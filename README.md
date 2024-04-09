@@ -80,3 +80,17 @@ CREATE UNIQUE INDEX "attendees_event_id_email_key" ON "attendees"("event_id", "e
 -- CreateIndex
 CREATE UNIQUE INDEX "check_ins_attendeeId_key" ON "check_ins"("attendeeId");
 ```
+
+#Anotações
+
+npm i prisma -D
+
+npx prisma init --datasource-provider sqlite
+
+
+alterar no "settings.json USER" 
+``` json
+"[prisma]": {
+    "editor.formatOnSave": true
+},
+```

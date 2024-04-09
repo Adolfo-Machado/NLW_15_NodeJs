@@ -6,3 +6,26 @@ Content-Type: application/json
     "details": "Um evento para programação novo",
     "maximumAttendees":20
 }
+
+###
+
+POST http://localhost:3333/events/67e7b625-bced-4782-af3a-b500ca5f11a5/attendees
+Content-Type: application/json
+
+{
+    "name": "Adolfo Machado",
+    "email": "adolfo@email.com"
+}
+
+###
+
+POST http://localhost:3333/events/5e49491d-0665-4744-879c-ab9a7ff3f615/attendees
+Content-Type: application/json
+
+{
+    "name": "Adolfo Machado",
+    "email": "adolfo@email.com"
+}
+
+###
+

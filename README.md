@@ -94,3 +94,5 @@ alterar no "settings.json USER"
     "editor.formatOnSave": true
 },
 ```
+
+antes de criar a constraint '@@unique([eventId, email])' é preciso tomar cuidado para não ter email duplicado para o mesmo evento, caso contrário irá dar erro na criação.

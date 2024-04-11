@@ -17,6 +17,7 @@ model Event {
     slug             String     @unique
     maximumAttendees Int?       @map("maximum_attendees")
     attendee         Attendee[]
+    // um relacionamento e de um para muitos
 
     @@map("events")
 }
@@ -28,7 +29,19 @@ model Attendee {
     createdAt DateTime @default(now()) @map("created_at")
     event     Event    @relation(fields: [eventId], references: [id])
     eventId   String   @map("envent_id")
+    checkIn   CheckIn?
+    // um relacionamento e de um para um e o ? indica que pode não ter o check-in
 
     @@unique([eventId, email])
     @@map("attendees")
+}
+
+model CheckIn {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now()) @map("created_at")
+
+    attendee   Attendee @relation(fields: [attendeeId], references: [id])
+    attendeeId Int      @unique @map("attendee_id")
+
+    @@map("check_in")
 }

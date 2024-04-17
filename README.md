@@ -81,18 +81,20 @@ CREATE UNIQUE INDEX "attendees_event_id_email_key" ON "attendees"("event_id", "e
 CREATE UNIQUE INDEX "check_ins_attendeeId_key" ON "check_ins"("attendeeId");
 ```
 
-#Anotações
 
-npm i prisma -D
+## Anotações
 
+Comando para inicializar o banco do SqLite
 npx prisma init --datasource-provider sqlite
 
 
-alterar no "settings.json USER" 
+Fazer alteraração no "settings.json USER", com isso ao salvar o arquivo de schema do Prisma, será identado automaticamente e alguns outros benefícios como a criação de relacionamentos
 ``` json
 "[prisma]": {
     "editor.formatOnSave": true
 },
-```
+```   
 
-antes de criar a constraint '@@unique([eventId, email])' é preciso tomar cuidado para não ter email duplicado para o mesmo evento, caso contrário irá dar erro na criação.
+##### Atanção
+
+Antes de criar a constraint '@@unique([eventId, email])' é preciso tomar cuidado para não ter email duplicado para o mesmo evento, caso contrário irá dar erro na criação.

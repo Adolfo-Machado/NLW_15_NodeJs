@@ -1,5 +1,5 @@
 {
-  "name": "nodejs",
+  "name": "server-node",
   "version": "1.0.0",
   "description": "O pass.in é uma aplicação de **gestão de participantes em eventos presenciais**.",
   "main": "index.js",
@@ -9,6 +9,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
   "dependencies": {
     "@prisma/client": "^5.12.1",
     "fastify": "^4.26.2",

@@ -42,3 +42,13 @@ GET  http://localhost:3333/attendees/5/badge
 ###
 
 GET http://localhost:3333/attendees/1/check-in
+
+
+###
+
+GET  http://localhost:3333/events/67e7b625-bced-4782-af3a-b500ca5f11a5/attendees
+
+
+###
+
+GET  http://localhost:3333/events/67e7b625-bced-4782-af3a-b500ca5f11a5/attendees?query=adolfo

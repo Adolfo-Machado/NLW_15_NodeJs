@@ -84,9 +84,23 @@ CREATE UNIQUE INDEX "check_ins_attendeeId_key" ON "check_ins"("attendeeId");
 
 ## Anotações
 
-Comando para inicializar o banco do SqLite
-npx prisma init --datasource-provider sqlite
+Comando para inicializar o banco do SqLite => `npx prisma init --datasource-provider sqlite`
+    - (somente funciona se a pasta "prisma" não existir)    
+    
 
+Caso esteja clonando este repositório e queira iniciar seu banco vazio:
+    - apague o arquivo `dev.db` dentro da pasta prisma;
+    - apague a pasta `migration` dentro da pasta prisma;    
+    - execute o comando => `npx prisma migrate dev --name init`, isso fará com que seja gerado um banco vazio e em seguida seja populado com um `seed`.
+
+Caso não queira popular o banco:
+    - apague o arquivo `seed.ts` dentro da pasta prisma;
+    - no arquivo `package.json` remova o seguinte trecho:
+``` json 
+"prisma": {
+    "seed": "tsx prisma/seed.ts"
+},
+```
 
 Fazer alteraração no "settings.json USER", com isso ao salvar o arquivo de schema do Prisma, será identado automaticamente e alguns outros benefícios como a criação de relacionamentos
 ``` json
@@ -94,7 +108,3 @@ Fazer alteraração no "settings.json USER", com isso ao salvar o arquivo de sch
     "editor.formatOnSave": true
 },
 ```   
-
-##### Atanção
-
-Antes de criar a constraint '@@unique([eventId, email])' é preciso tomar cuidado para não ter email duplicado para o mesmo evento, caso contrário irá dar erro na criação.

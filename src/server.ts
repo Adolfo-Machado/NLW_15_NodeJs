@@ -2,18 +2,12 @@ import fastify from "fastify";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 import fastifyCors from "@fastify/cors";
-import { serializerCompiler, validatorCompiler, jsonSchemaTransform, ZodTypeProvider } from 'fastify-type-provider-zod'
-import { createEvent } from "./routes/create-even";
-import { registerForEvent } from "./routes/register-for-event";
-import { getEvent } from "./routes/get-event";
-import { getAttendeeBadge } from "./routes/get-attendee-badge";
-import { checkIn } from "./routes/check-in";
-import { getEventAttendees } from "./routes/get-event-attendees";
+import { serializerCompiler, validatorCompiler, jsonSchemaTransform } from 'fastify-type-provider-zod'
+import { checkIn, createEvent, getAttendeeBadge, getEvent, getEventAttendees, registerForEvent } from "./routes"
 import { errorHandler } from "./error-handler";
 
 const PORT = parseInt(process.env['SERVER_PORT'] || '3333');
 
-// export const app = fastify().withTypeProvider<ZodTypeProvider>();
 export const app = fastify();
 
 app.register(fastifyCors, {

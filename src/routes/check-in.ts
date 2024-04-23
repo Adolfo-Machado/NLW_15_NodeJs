@@ -31,7 +31,7 @@ export async function checkIn(app: FastifyInstance) {
             console.log('attendee: ', attendee);
 
             if (attendee == null) {
-                throw new Error("Participante não encontrado.");
+                throw new BadRequest("Participante não encontrado.");
             }
 
             const attendeeCheckIn = await prisma.checkIn.findUnique({

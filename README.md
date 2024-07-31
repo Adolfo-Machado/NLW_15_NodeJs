@@ -104,9 +104,58 @@ Caso não queira popular o banco:
 ```
 
 
-Fazer alteraração no "settings.json USER", com isso ao salvar o arquivo de schema do Prisma, será identado automaticamente e alguns outros benefícios como a criação de relacionamentos
+Fazer alteraração no "settings.json USER":
+
 ``` json
 "[prisma]": {
     "editor.formatOnSave": true
 },
 ```   
+Com essa alteração, ao salvar o arquivo de schema do Prisma, será identado automaticamente e alguns outros benefícios como a criação de relacionamentos automaticamente, como por exemplo:
+
+``` javascript
+model Event {
+    id               String     @id @default(uuid())
+    title            String
+    details          String?
+    slug             String     @unique
+    maximumAttendees Int?       @map("maximum_attendees")
+}
+
+model Attendee {
+    id        Int      @id @default(autoincrement())
+    name      String
+    email     String
+    createdAt DateTime @default(now()) @map("created_at")
+
+    // ao indicar que exite um relacionamento entre um "Atendendee" com um "Event" e ao salvar 
+    event     Event     
+}
+```   
+
+``` javascript
+// resultará nas seguintes alterações
+model Event {
+    id               String     @id @default(uuid())
+    title            String
+    details          String?
+    slug             String     @unique
+    maximumAttendees Int?       @map("maximum_attendees") 
+    attendee         Attendee[] //criado automaticanemte 
+
+    
+}
+
+model Attendee {
+    id        Int      @id @default(autoincrement())
+    name      String
+    email     String
+    createdAt DateTime @default(now()) @map("created_at")
+    event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade) //formatado automaticanemte 
+    eventId   String   //criado automaticanemte 
+    checkIn   CheckIn? 
+
+    
+}
+
+```

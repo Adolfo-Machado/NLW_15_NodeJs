@@ -16,11 +16,10 @@ model Event {
     title            String
     details          String?
     slug             String     @unique
-    maximumAttendees Int?       @map("maximum_attendees")
-    attendee         Attendee[]
-    // um relacionamento e de um para muitos
+    maximumAttendees Int?       @map("maximum_attendees") //@map indica que o nome da tabela é 'maximum_attendees' e não 'maximumAttendees'
+    attendee         Attendee[] // um relacionamento e de um para muitos
 
-    @@map("events")
+    @@map("events") // @@map serve para indicar que o nome da tabela no banco será 'events' e não 'Event'
 }
 
 model Attendee {
@@ -30,8 +29,7 @@ model Attendee {
     createdAt DateTime @default(now()) @map("created_at")
     event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
     eventId   String   @map("envent_id")
-    checkIn   CheckIn?
-    // um relacionamento e de um para um e o ? indica que pode não ter o check-in
+    checkIn   CheckIn? // um relacionamento e de um para um e o ? indica que pode não ter o check-in
 
     @@unique([eventId, email])
     @@map("attendees")

@@ -95,13 +95,8 @@ Caso esteja clonando este repositório e queira iniciar seu banco vazio:
 
    
 Caso não queira popular o banco:
-- apague o arquivo `seed.ts` dentro da pasta prisma;
-- no arquivo `package.json` remova o seguinte trecho:   
-``` json 
-"prisma": {
-    "seed": "tsx prisma/seed.ts"
-},
-```
+- execute o comando => `npx prisma migrate dev --skip-seed`.
+
 
 
 Fazer alteraração no "settings.json USER":
@@ -127,7 +122,6 @@ model Attendee {
     name      String
     email     String
     createdAt DateTime @default(now()) @map("created_at")
-
     // ao indicar que exite um relacionamento entre um "Atendendee" com um "Event" e ao salvar 
     event     Event     
 }
@@ -141,9 +135,7 @@ model Event {
     details          String?
     slug             String     @unique
     maximumAttendees Int?       @map("maximum_attendees") 
-    attendee         Attendee[] //criado automaticanemte 
-
-    
+    attendee         Attendee[] //criado automaticanemte     
 }
 
 model Attendee {
@@ -153,9 +145,7 @@ model Attendee {
     createdAt DateTime @default(now()) @map("created_at")
     event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade) //formatado automaticanemte 
     eventId   String   //criado automaticanemte 
-    checkIn   CheckIn? 
-
-    
+    checkIn   CheckIn?    
 }
 
 ```
